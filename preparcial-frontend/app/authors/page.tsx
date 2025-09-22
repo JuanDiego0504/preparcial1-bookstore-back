@@ -14,7 +14,7 @@ type Author = {
 const API_BASE = "http://127.0.0.1:8080/api";
 const HIDDEN_KEY = "hiddenAuthorIds";
 
-// helpers de persistencia
+
 function readHidden(): number[] {
   if (typeof window === "undefined") return [];
   try {
@@ -66,7 +66,7 @@ export default function AuthorsPage() {
     try {
       const res = await fetch(`${API_BASE}/authors/${id}`, { method: "DELETE" });
       if (res.ok) {
-        // borrado real
+       
         setAuthors((prev) => prev.filter((a) => a.id !== id));
         return;
       }
