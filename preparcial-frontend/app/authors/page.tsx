@@ -66,18 +66,18 @@ export default function AuthorsPage() {
     try {
       const res = await fetch(`${API_BASE}/authors/${id}`, { method: "DELETE" });
       if (res.ok) {
-       
+      
         setAuthors((prev) => prev.filter((a) => a.id !== id));
         return;
       }
-      
+     
       addHidden(id);
       setHiddenIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
       alert(
         "Este autor tiene datos relacionados en la base y no se pudo eliminar.\nLo oculté de la lista para que no aparezca."
       );
     } catch {
-      
+    
       addHidden(id);
       setHiddenIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
       alert("Error al eliminar autor. Lo oculté de la lista.");
