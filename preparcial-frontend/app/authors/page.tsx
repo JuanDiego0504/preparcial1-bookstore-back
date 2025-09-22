@@ -8,7 +8,7 @@ type Author = {
   name: string;
   description: string;
   image: string;
-  birthDate: string; // ISO yyyy-mm-dd
+  birthDate: string; 
 };
 
 const API_BASE = "http://127.0.0.1:8080/api";
@@ -70,14 +70,14 @@ export default function AuthorsPage() {
         setAuthors((prev) => prev.filter((a) => a.id !== id));
         return;
       }
-      // falló en backend → lo ocultamos
+      
       addHidden(id);
       setHiddenIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
       alert(
         "Este autor tiene datos relacionados en la base y no se pudo eliminar.\nLo oculté de la lista para que no aparezca."
       );
     } catch {
-      // error de red → también lo ocultamos
+      
       addHidden(id);
       setHiddenIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
       alert("Error al eliminar autor. Lo oculté de la lista.");
